@@ -1,33 +1,75 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramin Vivah — Vendors List</title>
+    <style>
+        body { font-family: sans-serif; background: #fdf2f2; margin: 0; padding: 0; }
+        .header { background: #8B1A1A; color: white; padding: 40px 20px; text-align: center; }
+        .search-box { max-width: 600px; margin: -25px auto 20px; background: white; padding: 10px; border-radius: 50px; display: flex; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 2px solid #8B1A1A; }
+        .search-box input { flex: 1; border: none; padding: 10px 20px; outline: none; font-size: 16px; border-radius: 50px; }
+        .list-container { max-width: 1000px; margin: 20px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 12px; padding: 15px; border-bottom: 4px solid #8B1A1A; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .card h3 { margin: 5px 0; color: #333; }
+        .tag { background: #ffebee; color: #c62828; padding: 3px 8px; font-size: 12px; border-radius: 4px; font-weight: bold; }
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+        .btn { flex: 1; text-align: center; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .btn-call { background: #8B1A1A; color: white; }
+        .btn-wa { background: #25D366; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ग्रामीन विवाह</h1>
+    <p>Bargarh, Barpali aur aas-paas ke vendors khojein</p>
+</div>
+
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search Village (e.g. Bargarh, Tulandi)..." onkeyup="searchVendor()">
+</div>
+
+<div class="list-container" id="vendorGrid">
+    </div>
+
 <script>
-// 1. Aapka Vendor Data
-const vendors = [
-    { id: 1, name: 'Shri Ram Tent House', village: 'Rampur', cat: 'tent', rating: 4.8 },
-    { id: 2, name: 'Sonu Band Party', village: 'Sitapur', cat: 'band', rating: 4.6 },
-    { id: 3, name: 'Mama Ji Ka Dhaba', village: 'Rampur', cat: 'catering', rating: 4.9 }
-];
+    // Ye aapka data hai
+    const myData = [
+        { name: "Shri Ram Tent", nameHi: "श्री राम टेंट हाउस", village: "Bargarh", cat: "Tent House", phone: "9876543210" },
+        { name: "Sonu Band Party", nameHi: "सोनू बैंड पार्टी", village: "Barpali", cat: "Band-Baja", phone: "9123456789" },
+        { name: "Maa Durga Catering", nameHi: "माँ दुर्गा कैटरिंग", village: "Bargarh", cat: "Catering", phone: "9988776655" },
+        { name: "Laxmi Tent", nameHi: "लक्ष्मी टेंट", village: "Tulandi", cat: "Tent House", phone: "8877665544" },
+        { name: "Bheden Band", nameHi: "भेडेन बैंड", village: "Bheden", cat: "Band-Baja", phone: "7766554433" }
+    ];
 
-// 2. Search Function
-function doSearch() {
-    const term = document.getElementById('searchInput').value.toLowerCase().trim();
-    const selectedCat = document.getElementById('searchCat').value;
-    
-    // Data filter karne ka logic
-    const filtered = vendors.filter(v => {
-        const matchesTerm = v.village.toLowerCase().includes(term) || v.name.toLowerCase().includes(term);
-        const matchesCat = selectedCat === "" || v.cat === selectedCat;
-        return matchesTerm && matchesCat;
-    });
+    function showVendors(list) {
+        const grid = document.getElementById('vendorGrid');
+        grid.innerHTML = list.map(v => `
+            <div class="card">
+                <span class="tag">${v.cat}</span>
+                <h3>${v.nameHi}</h3>
+                <p style="color: #666; font-size: 14px;">📍 ${v.village}</p>
+                <div class="btn-group">
+                    <a href="tel:${v.phone}" class="btn btn-call">Call</a>
+                    <a href="https://wa.me/91${v.phone}" class="btn btn-wa">WhatsApp</a>
+                </div>
+            </div>
+        `).join('');
+    }
 
-    console.log("Filtered Results:", filtered);
-    renderVendors(filtered); // Yeh function cards ko update karega
-}
+    function searchVendor() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const filtered = myData.filter(item => 
+            item.village.toLowerCase().includes(input) || 
+            item.name.toLowerCase().includes(input)
+        );
+        showVendors(filtered);
+    }
 
-// 3. Quick Village Select
-function fillSearch(villageName) {
-    document.getElementById('searchInput').value = villageName;
-    doSearch();
-}
-
-// 4. Input par real-time search
-document.getElementById('searchInput').addEventListener('input', doSearch);
+    // Pehli baar load karne par
+    showVendors(myData);
 </script>
+
+</body>
+</html>

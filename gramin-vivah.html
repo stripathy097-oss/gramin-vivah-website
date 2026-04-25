@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gramin Vivah — गाँव की शादी, अपने लोग</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --coral: #FF6B6B;
+  --deep-rose: #C0392B;
+  --marigold: #FF9F43;
+  --gold: #F7B731;
+  --deep-gold: #E67E22;
+  --cream: #FFF9F0;
+  --warm-white: #FFFBF5;
+  --maroon: #8B1A1A;
+  --maroon-deep: #5C0F0F;
+  --sage: #27AE60;
+  --teal: #00897B;
+  --charcoal: #2D2D2D;
+  --text-muted: #7B6B63;
+  --border: rgba(139,26,26,0.12);
+
+  /* Myntra-inspired hero gradient (warm Indian palette) */
+  --grad-hero: linear-gradient(135deg, #8B1A1A 0%, #C0392B 25%, #E67E22 55%, #F7B731 80%, #FF9F43 100%);
+  --grad-card: linear-gradient(145deg, #fff9f0, #fff3e0);
+  --grad-badge: linear-gradient(90deg, #C0392B, #E67E22);
+  --grad-btn: linear-gradient(135deg, #C0392B 0%, #E67E22 100%);
+  --grad-section: linear-gradient(180deg, #fff9f0 0%, #fff3e0 100%);
+  --grad-muhurat: linear-gradient(135deg, #1a237e 0%, #283593 30%, #3949ab 60%, #5c6bc0 100%);
+  --grad-category: linear-gradient(145deg, #fff5e6, #ffe0b2);
+
+  --shadow-card: 0 4px 24px rgba(139,26,26,0.10);
+  --shadow-hero: 0 8px 40px rgba(139,26,26,0.25);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+  background: var(--warm-white);
+  color: var(--charcoal);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
+
+/* ===== TOP BANNER ===== */
+.top-banner {
+  background: var(--grad-badge);
+  color: #fff;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.top-banner span { opacity: 0.85; margin: 0 12px; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  box-shadow: 0 2px 20px rgba(139,26,26,0.08);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--grad-btn);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.logo-text { line-height: 1.2; }
+.logo-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 700; font-size: 16px; color: var(--maroon); }
+.logo-en { font-size: 10px; color: var(--text-muted); font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--charcoal); transition: color 0.2s; position: relative; }
+.nav-links a:hover { color: var(--maroon); }
+.nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--grad-btn); border-radius: 1px; transition: width 0.3s; }
+.nav-links a:hover::after { width: 100%; }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.lang-toggle {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--maroon);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-toggle:hover { background: var(--maroon); color: #fff; }
+.btn-nav {
+  background: var(--grad-btn);
+  color: #fff;
+  border-radius: 22px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+  box-shadow: 0 3px 12px rgba(192,57,43,0.3);
+}
+.btn-nav:hover { transform: translateY(-1px); box-shadow: 0 5px 20px rgba(192,57,43,0.4); }
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: var(--grad-hero);
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero::after {
+  content: '🌸';
+  position: absolute;
+  font-size: 300px;
+  opacity: 0.04;
+  right: -60px;
+  bottom: -60px;
+  line-height: 1;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 30px;
+  padding: 6px 18px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  animation: fadeDown 0.7s ease forwards;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.2);
+  animation: fadeDown 0.7s ease 0.1s both;
+}
+.hero-title-hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 3vw, 32px);
+  color: rgba(255,255,255,0.88);
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeDown 0.7s ease 0.2s both;
+}
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.82);
+  text-align: center;
+  max-width: 540px;
+  margin-bottom: 40px;
+  animation: fadeDown 0.7s ease 0.3s both;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-wrapper {
+  width: 100%;
+  max-width: 680px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.search-box {
+  background: #fff;
+  border-radius: 60px;
+  padding: 8px 8px 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.25);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.search-icon { font-size: 20px; flex-shrink: 0; }
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: var(--charcoal);
+  background: transparent;
+}
+.search-input::placeholder { color: #bbb; }
+.search-divider { width: 1px; height: 30px; background: var(--border); }
+.search-cat {
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: var(--maroon);
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  padding: 0 8px;
+}
+.btn-search {
+  background: var(--grad-btn);
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(192,57,43,0.35);
+  white-space: nowrap;
+}
+.btn-search:hover { transform: scale(1.04); box-shadow: 0 6px 24px rgba(192,57,43,0.5); }
+.search-hints {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hint-chip {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+.hint-chip:hover { background: rgba(255,255,255,0.32); }
+
+/* ===== HERO STATS ===== */
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.stat { text-align: center; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #fff; }
+.stat-lbl { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.8px; }
+.stat-divider { width: 1px; background: rgba(255,255,255,0.25); align-self: stretch; }
+
+/* ===== SECTION BASE ===== */
+section { padding: 72px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, rgba(139,26,26,0.08), rgba(230,126,34,0.08));
+  border: 1px solid rgba(139,26,26,0.15);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--maroon);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--maroon-deep);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.sec-title-hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* ===== CATEGORIES ===== */
+.categories { background: var(--cream); }
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 14px;
+}
+.cat-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+.cat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-btn);
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: var(--radius);
+}
+.cat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); border-color: var(--coral); }
+.cat-card:hover::before { opacity: 1; }
+.cat-card:hover .cat-icon { transform: scale(1.15); }
+.cat-card:hover .cat-name, .cat-card:hover .cat-name-hi { color: #fff; }
+.cat-icon { font-size: 36px; display: block; margin-bottom: 10px; position: relative; z-index: 1; transition: transform 0.25s; }
+.cat-name { font-weight: 600; font-size: 13px; color: var(--charcoal); position: relative; z-index: 1; display: block; }
+.cat-name-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 12px; color: var(--text-muted); position: relative; z-index: 1; display: block; margin-top: 2px; }
+
+/* ===== VENDOR CARDS ===== */
+.vendors-section { background: var(--warm-white); }
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  align-items: center;
+}
+.filter-btn {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Poppins', sans-serif;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--maroon);
+  color: #fff;
+  border-color: var(--maroon);
+}
+.filter-sort {
+  margin-left: auto;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--charcoal);
+  cursor: pointer;
+}
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.vendor-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s;
+  position: relative;
+}
+.vendor-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(139,26,26,0.14); }
+.vendor-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #ffe0b2, #ffccbc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  position: relative;
+  overflow: hidden;
+}
+.vendor-img-placeholder { font-size: 56px; }
+.vendor-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--grad-badge);
+  color: #fff;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.vendor-premium {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #F7B731, #E67E22);
+  color: #fff;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.vendor-body { padding: 16px; }
+.vendor-cat {
+  font-size: 11px;
+  color: var(--coral);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
+}
+.vendor-name { font-size: 16px; font-weight: 600; color: var(--charcoal); margin-bottom: 2px; }
+.vendor-name-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.vendor-loc { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+.vendor-rating { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--sage); }
+.vendor-price { font-size: 13px; color: var(--maroon); font-weight: 600; margin-top: 4px; }
+.vendor-price span { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+.vendor-actions { display: flex; gap: 8px; margin-top: 14px; }
+.btn-call {
+  flex: 1;
+  background: var(--grad-btn);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s;
+  box-shadow: 0 3px 10px rgba(192,57,43,0.25);
+}
+.btn-call:hover { box-shadow: 0 5px 18px rgba(192,57,43,0.4); transform: translateY(-1px); }
+.btn-wa {
+  flex: 1;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s;
+  box-shadow: 0 3px 10px rgba(37,211,102,0.25);
+}
+.btn-wa:hover { box-shadow: 0 5px 18px rgba(37,211,102,0.4); transform: translateY(-1px); }
+.verified-tag { display: inline-flex; align-items: center; gap: 4px; background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.3); border-radius: 6px; padding: 2px 8px; font-size: 10px; color: var(--sage); font-weight: 600; margin-top: 6px; }
+
+/* ===== MUHURAT SECTION ===== */
+.muhurat-section {
+  background: var(--grad-muhurat);
+  position: relative;
+  overflow: hidden;
+}
+.muhurat-section::before {
+  content: '🌙';
+  position: absolute;
+  font-size: 350px;
+  opacity: 0.04;
+  left: -80px;
+  top: -80px;
+}
+.muhurat-section::after {
+  content: '⭐';
+  position: absolute;
+  font-size: 250px;
+  opacity: 0.04;
+  right: -60px;
+  bottom: -40px;
+}
+.muhurat-section .sec-label { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
+.muhurat-section .sec-title { color: #fff; }
+.muhurat-section .sec-title-hi { color: rgba(255,255,255,0.65); }
+.muhurat-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: start; }
+.muhurat-calendar { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); padding: 24px; backdrop-filter: blur(10px); }
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.cal-month { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #fff; }
+.cal-nav { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 5px 10px; color: #fff; cursor: pointer; font-size: 16px; }
+.cal-days-header { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; margin-bottom: 8px; }
+.cal-days-header span { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 600; padding: 4px; }
+.cal-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.cal-day:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.cal-day.muhurat { background: linear-gradient(135deg, #F7B731, #E67E22); color: #fff; font-weight: 700; box-shadow: 0 2px 10px rgba(247,183,49,0.4); }
+.cal-day.muhurat5 { background: linear-gradient(135deg, #FFD700, #FF6B35); box-shadow: 0 2px 14px rgba(255,215,0,0.5); }
+.cal-day.today { border: 2px solid rgba(255,255,255,0.4); color: #fff; }
+.cal-day.inactive { opacity: 0.3; cursor: default; }
+.muhurat-legend { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.7); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+.muhurat-list { display: flex; flex-direction: column; gap: 12px; }
+.muhurat-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.muhurat-card:hover { background: rgba(255,255,255,0.18); transform: translateX(4px); }
+.muhurat-card.active { background: rgba(255,255,255,0.2); border-color: rgba(247,183,49,0.5); }
+.muhurat-date { font-size: 13px; font-weight: 600; color: #F7B731; margin-bottom: 4px; }
+.muhurat-time { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; font-family: 'Playfair Display', serif; }
+.muhurat-detail { font-size: 12px; color: rgba(255,255,255,0.65); }
+.muhurat-stars { color: #F7B731; font-size: 14px; float: right; }
+.muhurat-vendors-cta { margin-top: 10px; background: linear-gradient(90deg,rgba(247,183,49,0.2),rgba(230,126,34,0.2)); border: 1px solid rgba(247,183,49,0.3); border-radius: 8px; padding: 10px 14px; font-size: 12px; color: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: space-between; }
+.muhurat-vendors-cta .arrow { font-size: 18px; color: #F7B731; }
+
+/* ===== BUDGET CALCULATOR ===== */
+.calculator-section { background: var(--cream); }
+.calc-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.calc-field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.calc-field input, .calc-field select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: var(--charcoal);
+  outline: none;
+  transition: border 0.2s;
+  background: var(--cream);
+}
+.calc-field input:focus, .calc-field select:focus { border-color: var(--coral); background: #fff; }
+.btn-calc {
+  background: var(--grad-btn);
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(192,57,43,0.3);
+}
+.btn-calc:hover { box-shadow: 0 8px 28px rgba(192,57,43,0.4); transform: translateY(-1px); }
+.calc-results { margin-top: 28px; display: none; }
+.calc-results.show { display: block; animation: fadeUp 0.4s ease; }
+.calc-breakdown { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+.budget-item { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
+.budget-item-icon { font-size: 24px; margin-bottom: 6px; }
+.budget-item-name { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
+.budget-item-amount { font-size: 16px; font-weight: 700; color: var(--maroon); }
+.budget-bar { height: 6px; background: var(--border); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.budget-bar-fill { height: 100%; background: var(--grad-btn); border-radius: 3px; transition: width 0.8s ease; }
+
+/* ===== CHECKLIST ===== */
+.checklist-section { background: var(--warm-white); }
+.checklist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.checklist-cat {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(139,26,26,0.06);
+}
+.checklist-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.checklist-header.tent { background: linear-gradient(90deg,#fff5e6,#ffe0b2); color: var(--deep-gold); }
+.checklist-header.food { background: linear-gradient(90deg,#e8f5e9,#c8e6c9); color: #2E7D32; }
+.checklist-header.music { background: linear-gradient(90deg,#fce4ec,#f8bbd0); color: #880E4F; }
+.checklist-header.clothes { background: linear-gradient(90deg,#e3f2fd,#bbdefb); color: #1565C0; }
+.checklist-items { padding: 16px 20px; }
+.checklist-item { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(139,26,26,0.05); }
+.checklist-item:last-child { border-bottom: none; }
+.check-box { width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 5px; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.check-box.checked { background: var(--sage); border-color: var(--sage); }
+.check-box.checked::after { content: '✓'; color: #fff; font-size: 11px; font-weight: 700; }
+.checklist-item-text { font-size: 13px; color: var(--charcoal); }
+.checklist-item-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 12px; color: var(--text-muted); }
+
+/* ===== GROCERY QUOTES ===== */
+.grocery-section { background: linear-gradient(180deg,#fff9f0,#fff3e0); }
+.grocery-form { background: #fff; border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-card); border: 1px solid var(--border); }
+.grocery-items { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.grocery-row { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; align-items: center; }
+.grocery-row input, .grocery-row select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border 0.2s;
+}
+.grocery-row input:focus, .grocery-row select:focus { border-color: var(--coral); }
+.btn-add-item { background: var(--cream); border: 1.5px dashed var(--coral); color: var(--coral); border-radius: 8px; padding: 10px; font-size: 18px; cursor: pointer; transition: all 0.2s; }
+.btn-add-item:hover { background: rgba(192,57,43,0.08); }
+.btn-remove { background: none; color: #ccc; font-size: 18px; cursor: pointer; padding: 0 4px; transition: color 0.2s; }
+.btn-remove:hover { color: var(--coral); }
+.btn-quote { background: var(--grad-btn); color: #fff; border-radius: 12px; padding: 14px 32px; font-size: 14px; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 16px rgba(192,57,43,0.25); }
+.btn-quote:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(192,57,43,0.35); }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { background: var(--cream); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.testimonial-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.testimonial-card::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 80px; color: rgba(139,26,26,0.07); position: absolute; top: 8px; left: 16px; line-height: 1; }
+.testi-video { width: 100%; height: 140px; background: linear-gradient(135deg, #ffe0b2, #ffccbc); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; cursor: pointer; position: relative; overflow: hidden; }
+.play-btn { width: 50px; height: 50px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: all 0.2s; }
+.testi-video:hover .play-btn { transform: scale(1.1); background: #fff; }
+.testi-name { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+.testi-village { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+.testi-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; font-style: italic; }
+.testi-text-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.testi-rating { color: var(--gold); font-size: 13px; margin-top: 10px; }
+
+/* ===== MAP SECTION ===== */
+.map-section { background: var(--warm-white); }
+.map-placeholder {
+  height: 380px;
+  background: linear-gradient(135deg, #e8f5e9, #e0f2f1);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: var(--text-muted);
+  border: 2px dashed var(--border);
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.map-pin-demo { position: absolute; font-size: 32px; animation: bounce 2s infinite; }
+.map-pin-demo:nth-child(1) { top: 20%; left: 25%; animation-delay: 0s; }
+.map-pin-demo:nth-child(2) { top: 45%; left: 55%; animation-delay: 0.5s; }
+.map-pin-demo:nth-child(3) { top: 65%; left: 30%; animation-delay: 1s; }
+.map-pin-demo:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.map-label { font-size: 15px; font-weight: 500; color: var(--teal); }
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  background: var(--grad-hero);
+  text-align: center;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '🌺🌸🌼';
+  position: absolute;
+  font-size: 160px;
+  opacity: 0.06;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  letter-spacing: 40px;
+}
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,5vw,48px); font-weight: 900; color: #fff; margin-bottom: 14px; position: relative; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 32px; position: relative; }
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-cta-white { background: #fff; color: var(--maroon); border-radius: 50px; padding: 14px 32px; font-size: 15px; font-weight: 700; transition: all 0.2s; box-shadow: 0 6px 28px rgba(0,0,0,0.2); }
+.btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,0,0,0.25); }
+.btn-cta-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); border-radius: 50px; padding: 14px 32px; font-size: 15px; font-weight: 600; transition: all 0.2s; }
+.btn-cta-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1a0a0a;
+  color: rgba(255,255,255,0.75);
+  padding: 56px 24px 32px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto 40px; }
+.footer-brand .logo-hi { font-size: 22px; margin-bottom: 12px; color: var(--gold); display: block; }
+.footer-brand p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.55); max-width: 240px; }
+.footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--marigold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; font-size: 12px; color: rgba(255,255,255,0.35); }
+.footer-badges { display: flex; gap: 8px; }
+.footer-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 4px 10px; font-size: 11px; }
+
+/* ===== STICKY CTA BUTTONS ===== */
+.sticky-btns {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9998;
+}
+.sticky-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  color: #fff;
+}
+.sticky-btn:hover { transform: scale(1.1); }
+.sticky-wa { background: #25D366; }
+.sticky-up { background: var(--grad-btn); font-size: 16px; }
+
+/* ===== MODAL ===== */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+.modal-overlay.open { display: flex; }
+.modal { background: #fff; border-radius: var(--radius); padding: 32px; width: 90%; max-width: 460px; position: relative; animation: fadeUp 0.3s ease; }
+.modal-close { position: absolute; top: 14px; right: 18px; font-size: 22px; color: var(--text-muted); cursor: pointer; background: none; border: none; }
+.modal h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--maroon); margin-bottom: 6px; }
+.modal p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+.otp-input { width: 100%; padding: 14px 18px; border: 2px solid var(--border); border-radius: 10px; font-size: 15px; font-family: 'Poppins', sans-serif; outline: none; transition: border 0.2s; }
+.otp-input:focus { border-color: var(--coral); }
+.btn-otp { background: var(--grad-btn); color: #fff; width: 100%; border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 600; margin-top: 12px; transition: all 0.2s; }
+.btn-otp:hover { box-shadow: 0 6px 24px rgba(192,57,43,0.35); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* ===== MOBILE NAV ===== */
+.hamburger { display: none; background: none; font-size: 24px; color: var(--maroon); }
+.mobile-menu { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); z-index: 998; flex-direction: column; align-items: center; justify-content: center; gap: 28px; backdrop-filter: blur(20px); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 20px; font-weight: 600; color: var(--maroon); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+  .nav-links, .nav-actions .btn-nav { display: none; }
+  .hamburger { display: block; }
+  .muhurat-grid { grid-template-columns: 1fr; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-grid .footer-brand { grid-column: span 2; }
+  .grocery-row { grid-template-columns: 1fr 1fr; }
+  .grocery-row input:first-child { grid-column: span 2; }
+  .hero-stats { gap: 24px; }
+  .stat-num { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  🌸 <span>अभी Free Listing उपलब्ध है</span> | <span>Free listing available now for all vendors</span> | <span>📞 1800-XXX-XXXX</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">🪔</div>
+    <div class="logo-text">
+      <div class="logo-hi">ग्राम विवाह</div>
+      <div class="logo-en">Gramin Vivah</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#vendors">Vendors / विक्रेता</a>
+    <a href="#muhurat">Muhurat / मुहूर्त</a>
+    <a href="#calculator">Budget / बजट</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#grocery">Ration Quote</a>
+  </div>
+  <div class="nav-actions">
+    <button class="lang-toggle" onclick="toggleLang()">हि / EN</button>
+    <button class="btn-nav" onclick="openModal()">Login / लॉगिन</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button style="position:absolute;top:20px;right:20px;font-size:28px;background:none;color:var(--maroon)" onclick="toggleMenu()">✕</button>
+  <a href="#vendors" onclick="toggleMenu()">🏪 Vendors</a>
+  <a href="#muhurat" onclick="toggleMenu()">🌙 Muhurat</a>
+  <a href="#calculator" onclick="toggleMenu()">💰 Budget</a>
+  <a href="#checklist" onclick="toggleMenu()">✅ Checklist</a>
+  <a href="#grocery" onclick="toggleMenu()">🛒 Ration Quote</a>
+  <button class="btn-nav" onclick="openModal();toggleMenu()">Login / लॉगिन</button>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-tag">🌸 गाँव की शादी का डिजिटल साथी</div>
+  <h1 class="hero-title">Gramin Vivah</h1>
+  <div class="hero-title-hi">अपने गाँव के सभी शादी vendors एक जगह</div>
+  <p class="hero-sub">Find trusted tent houses, band parties, caterers, and more — right in your village. No middleman, direct contact.</p>
+
+  <div class="search-wrapper">
+    <div class="search-box">
+      <span class="search-icon">📍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="अपने गाँव का नाम लिखें... (e.g. Rampur, Sitapur)" />
+      <div class="search-divider"></div>
+      <select class="search-cat" id="searchCat">
+        <option value="">All / सब</option>
+        <option value="tent">🎪 Tent House</option>
+        <option value="band">🎵 Band-Baja</option>
+        <option value="catering">🍲 Catering / Halwai</option>
+        <option value="grocery">🛒 Kirana / Ration</option>
+        <option value="clothes">👔 Clothes / Kapde</option>
+        <option value="decor">💐 Decoration</option>
+        <option value="jewelry">💍 Jewellery</option>
+      </select>
+      <button class="btn-search" onclick="doSearch()">🔍 खोजें</button>
+    </div>
+    <div class="search-hints">
+      <span class="hint-chip" onclick="fillSearch('Rampur')">📍 Rampur</span>
+      <span class="hint-chip" onclick="fillSearch('Sitapur')">📍 Sitapur</span>
+      <span class="hint-chip" onclick="fillSearch('Barabanki')">📍 Barabanki</span>
+      <span class="hint-chip" onclick="fillSearch('Gorakhpur')">📍 Gorakhpur</span>
+      <span class="hint-chip" onclick="fillSearch('Hardoi')">📍 Hardoi</span>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" id="ctr-vendors">50+</div><div class="stat-lbl">Verified Vendors</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Villages Covered</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Field Verified</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-lbl">Always Free for Users</div></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="sec-label">🏷️ Browse by Category</div>
+    <h2 class="sec-title">शादी की हर ज़रूरत</h2>
+    <div class="sec-title-hi">Wedding ki har zaroorat — ek jagah</div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="filterVendors('tent')"><span class="cat-icon">🎪</span><span class="cat-name">Tent House</span><span class="cat-name-hi">टेंट हाउस</span></div>
+      <div class="cat-card" onclick="filterVendors('band')"><span class="cat-icon">🎺</span><span class="cat-name">Band-Baja</span><span class="cat-name-hi">बैंड-बाजा</span></div>
+      <div class="cat-card" onclick="filterVendors('catering')"><span class="cat-icon">🍲</span><span class="cat-name">Catering / Halwai</span><span class="cat-name-hi">हलवाई / खाना</span></div>
+      <div class="cat-card" onclick="filterVendors('grocery')"><span class="cat-icon">🛒</span><span class="cat-name">Kirana / Ration</span><span class="cat-name-hi">किराना / राशन</span></div>
+      <div class="cat-card" onclick="filterVendors('clothes')"><span class="cat-icon">👗</span><span class="cat-name">Clothes / Lehenga</span><span class="cat-name-hi">कपड़े / लहंगा</span></div>
+      <div class="cat-card" onclick="filterVendors('decor')"><span class="cat-icon">💐</span><span class="cat-name">Decoration</span><span class="cat-name-hi">सजावट</span></div>
+      <div class="cat-card" onclick="filterVendors('jewelry')"><span class="cat-icon">💍</span><span class="cat-name">Jewellery</span><span class="cat-name-hi">ज्वेलरी / गहने</span></div>
+      <div class="cat-card" onclick="filterVendors('photo')"><span class="cat-icon">📸</span><span class="cat-name">Photography</span><span class="cat-name-hi">फोटोग्राफी</span></div>
+      <div class="cat-card" onclick="filterVendors('pandit')"><span class="cat-icon">🕉️</span><span class="cat-name">Pandit Ji</span><span class="cat-name-hi">पंडित जी</span></div>
+      <div class="cat-card"><span class="cat-icon">🚗</span><span class="cat-name">Transport</span><span class="cat-name-hi">गाड़ी / बस</span></div>
+      <div class="cat-card"><span class="cat-icon">🎆</span><span class="cat-name">Fireworks</span><span class="cat-name-hi">आतिशबाज़ी</span></div>
+      <div class="cat-card"><span class="cat-icon">🎂</span><span class="cat-name">Bakery / Cake</span><span class="cat-name-hi">बेकरी / केक</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VENDORS -->
+<section class="vendors-section" id="vendors">
+  <div class="container">
+    <div class="sec-label">🏪 Local Vendors</div>
+    <h2 class="sec-title">आपके गाँव के Vendors</h2>
+    <div class="sec-title-hi">Verified vendors near your village — direct contact, no commission</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterVendors('all', this)">All / सभी</button>
+      <button class="filter-btn" onclick="filterVendors('tent', this)">🎪 Tent</button>
+      <button class="filter-btn" onclick="filterVendors('band', this)">🎺 Band</button>
+      <button class="filter-btn" onclick="filterVendors('catering', this)">🍲 Catering</button>
+      <button class="filter-btn" onclick="filterVendors('grocery', this)">🛒 Kirana</button>
+      <button class="filter-btn" onclick="filterVendors('clothes', this)">👗 Clothes</button>
+      <select class="filter-sort">
+        <option>Sort: Nearest First</option>
+        <option>Sort: Rating High</option>
+        <option>Sort: Price Low to High</option>
+        <option>Sort: Premium First</option>
+      </select>
+    </div>
+    <div class="vendor-grid" id="vendorGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- MUHURAT -->
+<section class="muhurat-section" id="muhurat">
+  <div class="container">
+    <div class="sec-label">🪐 Astro-Connect Feature</div>
+    <h2 class="sec-title">Shubh Muhurat Calendar</h2>
+    <div class="sec-title-hi">शुभ मुहूर्त चुनें और available vendors देखें — automatically</div>
+    <div class="muhurat-grid">
+      <div>
+        <div class="muhurat-calendar">
+          <div class="cal-header">
+            <button class="cal-nav" onclick="prevMonth()">‹</button>
+            <div class="cal-month" id="calMonth">November 2025</div>
+            <button class="cal-nav" onclick="nextMonth()">›</button>
+          </div>
+          <div class="cal-days-header">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="cal-days" id="calDays"></div>
+          <div class="muhurat-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg,#F7B731,#E67E22)"></div>Shubh Muhurat</div>
+            <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(135deg,#FFD700,#FF6B35)"></div>Param Shubh ⭐</div>
+          </div>
+        </div>
+      </div>
+      <div class="muhurat-list" id="muhuratList">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET CALCULATOR -->
+<section class="calculator-section" id="calculator">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:8px">
+      <div class="sec-label">💰 Budget Planner</div>
+      <h2 class="sec-title">Wedding Budget Calculator</h2>
+      <div class="sec-title-hi">अपना बजट डालें — हम vendors सुझाएंगे</div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Total Wedding Budget (₹) / कुल बजट</label>
+          <input type="number" id="totalBudget" placeholder="e.g. 200000" min="10000" />
+        </div>
+        <div class="calc-field">
+          <label>Guest Count / मेहमान</label>
+          <input type="number" id="guestCount" placeholder="e.g. 300" min="50" />
+        </div>
+        <div class="calc-field">
+          <label>Wedding Village / गाँव</label>
+          <input type="text" id="weddingVillage" placeholder="Village name" />
+        </div>
+        <div class="calc-field">
+          <label>Wedding Date / तारीख</label>
+          <input type="date" id="weddingDate" />
+        </div>
+      </div>
+      <button class="btn-calc" onclick="calcBudget()">💡 Calculate & Find Vendors / बजट Calculate करें</button>
+      <div class="calc-results" id="calcResults">
+        <h3 style="font-size:16px;font-weight:600;color:var(--maroon);margin-bottom:6px">Recommended Budget Breakdown</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:0">Based on your budget of <strong id="budgetDisplay">₹2,00,000</strong> for <strong id="guestDisplay">300</strong> guests</p>
+        <div class="calc-breakdown" id="calcBreakdown"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="checklist-section" id="checklist">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:32px">
+      <div>
+        <div class="sec-label">✅ Shaadi Checklist</div>
+        <h2 class="sec-title">शादी की पूरी list</h2>
+        <div class="sec-title-hi">Tick karte jaiye, shadi ki taiyari karte jaiye</div>
+      </div>
+      <button style="background:var(--grad-btn);color:#fff;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600" onclick="window.print()">🖨️ Print / छापें</button>
+    </div>
+    <div class="checklist-grid" id="checklistGrid">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- GROCERY QUOTES -->
+<section class="grocery-section" id="grocery">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+      <div>
+        <div class="sec-label">🛒 Bulk Ration Quotes</div>
+        <h2 class="sec-title">Ration List भेजें, Quote पाएं</h2>
+        <div class="sec-title-hi">अपनी शादी की ration list डालें। 3 नज़दीकी kirana stores से quote आएगा।</div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="width:36px;height:36px;background:var(--grad-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">1</div>
+            <div><div style="font-weight:600;font-size:13px">अपनी list डालें</div><div style="font-size:12px;color:var(--text-muted)">Items, quantity, aur delivery date</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="width:36px;height:36px;background:var(--grad-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">2</div>
+            <div><div style="font-weight:600;font-size:13px">3 Kirana stores को भेजेंगे</div><div style="font-size:12px;color:var(--text-muted)">आपके गाँव के सबसे नज़दीकी stores</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="width:36px;height:36px;background:var(--grad-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0">3</div>
+            <div><div style="font-weight:600;font-size:13px">Quote compare करें</div><div style="font-size:12px;color:var(--text-muted)">Best deal वाले से directly contact करें</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="grocery-form">
+        <div style="font-size:15px;font-weight:600;color:var(--maroon);margin-bottom:16px">🛒 Ration List</div>
+        <div class="grocery-items" id="groceryItems">
+          <div class="grocery-row">
+            <input type="text" placeholder="Item name / सामान का नाम (e.g. चावल / Rice)" />
+            <input type="number" placeholder="Qty / मात्रा" />
+            <select><option>kg</option><option>liter</option><option>packet</option><option>dozen</option></select>
+            <button class="btn-remove" onclick="removeGroceryRow(this)">✕</button>
+          </div>
+        </div>
+        <button class="btn-add-item" style="width:100%;font-size:14px;padding:10px" onclick="addGroceryRow()">+ Add Item / और item जोड़ें</button>
+        <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div><label style="font-size:11px;font-weight:600;color:var(--text-muted);display:block;margin-bottom:4px">Village / गाँव</label><input type="text" placeholder="Your village" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;outline:none" /></div>
+          <div><label style="font-size:11px;font-weight:600;color:var(--text-muted);display:block;margin-bottom:4px">Date Needed / तारीख</label><input type="date" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;outline:none" /></div>
+        </div>
+        <button class="btn-quote" style="margin-top:16px;width:100%" onclick="submitGroceryQuote()">📤 Quote Request भेजें</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="sec-label">⭐ Village Reviews</div>
+    <h2 class="sec-title">गाँव वालों की राय</h2>
+    <div class="sec-title-hi">Real video testimonials from real village customers — no fake reviews</div>
+    <div class="testimonials-grid" id="testimonialGrid"></div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section" id="map">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="sec-label">🗺️ Vendor Map</div>
+        <h2 class="sec-title">Map पर देखें</h2>
+        <div class="sec-title-hi">Vendors kitni door hain — map par dekhein</div>
+      </div>
+      <button style="background:var(--grad-btn);color:#fff;border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600">📍 My Location Use करें</button>
+    </div>
+    <div class="map-placeholder">
+      <div class="map-pin-demo">📍</div>
+      <div class="map-pin-demo">📍</div>
+      <div class="map-pin-demo">📍</div>
+      <div class="map-pin-demo">📍</div>
+      <div style="text-align:center;z-index:1">
+        <div style="font-size:18px;font-weight:600;color:var(--teal)">🗺️ Interactive Map</div>
+        <div class="map-label">Leaflet.js map will render here in production</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Showing vendors within 20km of your village</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="cta-title">अपना Vendor Free में List करें</div>
+  <p class="cta-sub">List your business on Gramin Vivah — completely free. Get calls from customers in your village.</p>
+  <div class="cta-buttons">
+    <button class="btn-cta-white" onclick="openModal()">📋 Register as Vendor</button>
+    <button class="btn-cta-outline">📞 हमें Call करें: 1800-XXX-XXXX</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-hi">🪔 ग्राम विवाह</span>
+      <p>India's first hyper-local rural wedding directory. Connecting village families with trusted local vendors — field verified, no middleman, always free.</p>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <div style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer">📘</div>
+        <div style="width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer">📱</div>
+        <div style="width:36px;height:36px;background:rgba(37,211,102,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer">💬</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Tent Houses</a>
+      <a href="#">Band-Baja</a>
+      <a href="#">Catering / Halwai</a>
+      <a href="#">Decoration</a>
+      <a href="#">Photography</a>
+      <a href="#">Kirana Stores</a>
+    </div>
+    <div class="footer-col">
+      <h4>Features</h4>
+      <a href="#">Muhurat Calendar</a>
+      <a href="#">Budget Calculator</a>
+      <a href="#">Shaadi Checklist</a>
+      <a href="#">Ration Quotes</a>
+      <a href="#">Video Reviews</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Register as Vendor</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Gramin Vivah. Made with 🧡 for Rural India.</span>
+    <div class="footer-badges">
+      <div class="footer-badge">🇮🇳 India</div>
+      <div class="footer-badge">🔒 Secure</div>
+      <div class="footer-badge">✅ Field Verified</div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY BUTTONS -->
+<div class="sticky-btns">
+  <button class="sticky-btn sticky-wa" title="WhatsApp Help">💬</button>
+  <button class="sticky-btn sticky-up" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Login / लॉगिन करें</h3>
+    <p>अपना mobile number डालें — OTP आएगा। No password needed.</p>
+    <div id="modalStep1">
+      <input class="otp-input" type="tel" id="phoneInput" placeholder="📱 Mobile Number (10 digits)" maxlength="10" />
+      <button class="btn-otp" onclick="sendOtp()">📲 Send OTP</button>
+    </div>
+    <div id="modalStep2" style="display:none">
+      <input class="otp-input" type="number" id="otpInput" placeholder="Enter 4-digit OTP" maxlength="4" />
+      <button class="btn-otp" onclick="verifyOtp()">✅ Verify & Login</button>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:8px;text-align:center">OTP sent to <strong id="phoneSent"></strong> · <a href="#" style="color:var(--coral)" onclick="resendOtp()">Resend</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const vendors = [
+  { id:1, name:'Shri Ram Tent House', nameHi:'श्रीराम टेंट हाउस', cat:'tent', catLabel:'Tent House', icon:'🎪', village:'Rampur', dist:'1.2 km', rating:4.8, reviews:34, phone:'9876543210', wa:'9876543210', priceMin:15000, priceMax:40000, verified:true, premium:true, emoji:'🎪' },
+  { id:2, name:'Sonu Band Party', nameHi:'सोनू बैंड पार्टी', cat:'band', catLabel:'Band-Baja', icon:'🎺', village:'Sitapur', dist:'2.5 km', rating:4.6, reviews:22, phone:'9812345678', wa:'9812345678', priceMin:8000, priceMax:25000, verified:true, premium:false, emoji:'🎺' },
+  { id:3, name:'Mama Ji Ka Dhaba', nameHi:'मामा जी का ढाबा', cat:'catering', catLabel:'Catering', icon:'🍲', village:'Rampur', dist:'0.8 km', rating:4.9, reviews:67, phone:'9988776655', wa:'9988776655', priceMin:12000, priceMax:80000, verified:true, premium:true, emoji:'🍲' },
+  { id:4, name:'Lalji Kirana Store', nameHi:'लालजी किराना स्टोर', cat:'grocery', catLabel:'Kirana', icon:'🛒', village:'Hardoi', dist:'3.1 km', rating:4.5, reviews:18, phone:'9765432109', wa:'9765432109', priceMin:5000, priceMax:50000, verified:true, premium:false, emoji:'🛒' },
+  { id:5, name:'Ganga Saree Centre', nameHi:'गंगा साड़ी सेंटर', cat:'clothes', catLabel:'Clothes', icon:'👗', village:'Rampur', dist:'1.8 km', rating:4.7, reviews:41, phone:'9654321098', wa:'9654321098', priceMin:3000, priceMax:30000, verified:true, premium:true, emoji:'👗' },
+  { id:6, name:'Phool Decoration', nameHi:'फूल डेकोरेशन', cat:'decor', catLabel:'Decoration', icon:'💐', village:'Barabanki', dist:'4.2 km', rating:4.4, reviews:15, phone:'9543210987', wa:'9543210987', priceMin:10000, priceMax:35000, verified:false, premium:false, emoji:'💐' },
+];
+
+const muhurats = [
+  { date:'15 Nov 2025', dayOfMonth:15, time:'07:15 AM – 10:30 AM', nakshatra:'Rohini Nakshatra', tithi:'Panchami', score:5, note:'सर्वश्रेष्ठ मुहूर्त — Rohini nakshatra mein vivah ati shubh hota hai' },
+  { date:'22 Nov 2025', dayOfMonth:22, time:'06:45 AM – 09:00 AM', nakshatra:'Pushya Nakshatra', tithi:'Ekadashi', score:5, note:'Pushya nakshatra — dhan, sukh aur samriddhi ka karak' },
+  { date:'28 Nov 2025', dayOfMonth:28, time:'09:30 AM – 12:00 PM', nakshatra:'Uttara Phalguni', tithi:'Chaturdashi', score:4, note:'Shubh muhurat — uttara phalguni mein vivah pragati dene wala' },
+  { date:'5 Dec 2025', dayOfMonth:5, time:'08:00 AM – 11:15 AM', nakshatra:'Hasta Nakshatra', tithi:'Panchami', score:4, note:'Uchit muhurat — hasta nakshatra mein vivah sukhad rahta hai' },
+];
+
+const checklistData = [
+  { header:'tent', label:'Tent & Furniture', labelHi:'टेंट और फर्नीचर', emoji:'🎪', items:[{en:'Tent House booking',hi:'टेंट हाउस बुकिंग'},{en:'Chairs (200+ nos.)',hi:'कुर्सियां (200+)'},{en:'Tables & sofa sets',hi:'टेबल और सोफा'},{en:'Generator for electricity',hi:'जनरेटर'},{en:'Lighting setup',hi:'लाइटिंग सेटअप'},{en:'Stage / Mandap',hi:'मंच / मंडप'}] },
+  { header:'food', label:'Food & Catering', labelHi:'खाना और हलवाई', emoji:'🍲', items:[{en:'Halwai / Caterer booking',hi:'हलवाई बुकिंग'},{en:'Rice (Chawal) — 100kg+',hi:'चावल — 100 किलो+'},{en:'Dal — 40kg',hi:'दाल — 40 किलो'},{en:'Oil / Ghee',hi:'तेल / घी'},{en:'Spices & masale',hi:'मसाले'},{en:'Sweets (Mithai) order',hi:'मिठाई का ऑर्डर'},{en:'Paan / supari',hi:'पान / सुपारी'}] },
+  { header:'music', label:'Music & Entertainment', labelHi:'संगीत और मनोरंजन', emoji:'🎺', items:[{en:'Band-Baja booking',hi:'बैंड-बाजा बुकिंग'},{en:'DJ / Sound system',hi:'DJ / साउंड सिस्टम'},{en:'Fireworks (Patakhe)',hi:'पटाखे'},{en:'Bioscope / Entertainment',hi:'मनोरंजन'},{en:'Shehnai if needed',hi:'शहनाई (यदि आवश्यक)'}] },
+  { header:'clothes', label:'Clothes & Jewellery', labelHi:'कपड़े और गहने', emoji:'👗', items:[{en:'Bridal lehenga / saree',hi:'दुल्हन का लहंगा / साड़ी'},{en:'Groom\'s sherwani',hi:'दूल्हे की शेरवानी'},{en:'Family outfits',hi:'परिवार के कपड़े'},{en:'Jewellery / Gehne',hi:'गहने'},{en:'Bangles (Chudiyaan)',hi:'चूड़ियां'},{en:'Sindoor, mangalsutra',hi:'सिंदूर, मंगलसूत्र'}] },
+];
+
+const testimonials = [
+  { name:'Ramesh Yadav', nameHi:'रमेश यादव', village:'Rampur, UP', rating:5, text:'Found all vendors in one place. The Tent House I booked through Gramin Vivah gave 20% discount.', textHi:'सब vendors एक जगह मिले। बहुत अच्छी site है।', icon:'👴' },
+  { name:'Sunita Devi', nameHi:'सुनीता देवी', village:'Sitapur, UP', rating:5, text:'Muhurat calendar bahut helpful tha. Maine pahle muhurat dekha phir tent aur band book kiya.', textHi:'मुहूर्त calendar से पहले date चुनी, फिर vendor। बहुत आसान।', icon:'👩' },
+  { name:'Pandit Krishnadev', nameHi:'पंडित कृष्णदेव', village:'Hardoi, UP', rating:5, text:'Main bhi iss site pe registered hoon. Bahut calls aane lage hain pichle mahine se.', textHi:'मुझे भी बहुत calls आ रहे हैं। Gramin Vivah bahut acha hai।', icon:'🧔' },
+];
+
+// ===== RENDER VENDORS =====
+function renderVendors(filter='all') {
+  const grid = document.getElementById('vendorGrid');
+  const filtered = filter === 'all' ? vendors : vendors.filter(v => v.cat === filter);
+  grid.innerHTML = filtered.map(v => `
+    <div class="vendor-card">
+      <div class="vendor-img">
+        <div class="vendor-img-placeholder">${v.emoji}</div>
+        <div class="vendor-badge">${v.catLabel}</div>
+        ${v.premium ? '<div class="vendor-premium">⭐ Premium</div>' : ''}
+      </div>
+      <div class="vendor-body">
+        <div class="vendor-cat">${v.catLabel}</div>
+        <div class="vendor-name">${v.name}</div>
+        <div class="vendor-name-hi">${v.nameHi}</div>
+        <div class="vendor-loc">📍 ${v.village} &nbsp;|&nbsp; 📏 ${v.dist}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="vendor-rating">⭐ ${v.rating} <span style="color:var(--text-muted);font-weight:400">(${v.reviews} reviews)</span></div>
+          <div class="vendor-price">₹${(v.priceMin/1000).toFixed(0)}k – ${(v.priceMax/1000).toFixed(0)}k <span>/ package</span></div>
+        </div>
+        ${v.verified ? '<div class="verified-tag">✅ Field Verified by Gramin Vivah</div>' : ''}
+        <div class="vendor-actions">
+          <button class="btn-call" onclick="callVendor('${v.phone}')">📞 Call Now</button>
+          <button class="btn-wa" onclick="whatsappVendor('${v.wa}','${v.name}')">💬 WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterVendors(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderVendors(cat);
+  document.getElementById('vendors').scrollIntoView({behavior:'smooth'});
+}
+
+function callVendor(ph) { window.location.href = 'tel:+91' + ph; }
+function whatsappVendor(ph, name) { window.open('https://wa.me/91'+ph+'?text=Namaste%2C%20main%20'+encodeURIComponent(name)+'%20se%20baat%20karna%20chahta%20hoon%20jo%20Gramin%20Vivah%20pe%20mila'); }
+
+// ===== MUHURAT CALENDAR =====
+let calDate = new Date(2025, 10, 1); // Nov 2025
+const muhuratDays5 = [15, 22];
+const muhuratDays4 = [28];
+const muhuratDays3 = [5];
+
+function renderCalendar() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('calMonth').textContent = months[calDate.getMonth()] + ' ' + calDate.getFullYear();
+  const first = new Date(calDate.getFullYear(), calDate.getMonth(), 1).getDay();
+  const days = new Date(calDate.getFullYear(), calDate.getMonth()+1, 0).getDate();
+  let html = '';
+  for(let i=0;i<first;i++) html += '<div class="cal-day inactive"></div>';
+  const today = new Date();
+  for(let d=1;d<=days;d++) {
+    let cls = 'cal-day';
+    if(d===today.getDate() && calDate.getMonth()===today.getMonth()) cls += ' today';
+    if(muhuratDays5.includes(d)) cls += ' muhurat5 muhurat';
+    else if(muhuratDays4.includes(d)) cls += ' muhurat';
+    html += `<div class="${cls}" onclick="selectMuhurat(${d})">${d}</div>`;
+  }
+  document.getElementById('calDays').innerHTML = html;
+}
+
+function prevMonth() { calDate.setMonth(calDate.getMonth()-1); renderCalendar(); }
+function nextMonth() { calDate.setMonth(calDate.getMonth()+1); renderCalendar(); }
+
+function selectMuhurat(day) {
+  const m = muhurats.find(x => x.dayOfMonth === day);
+  if(m) {
+    document.querySelectorAll('.muhurat-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('mc-'+day)?.classList.add('active');
+  }
+}
+
+function renderMuhurats() {
+  const list = document.getElementById('muhuratList');
+  list.innerHTML = muhurats.map(m => `
+    <div class="muhurat-card" id="mc-${m.dayOfMonth}" onclick="document.querySelectorAll('.muhurat-card').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+      <div class="muhurat-stars">${'⭐'.repeat(m.score)}</div>
+      <div class="muhurat-date">📅 ${m.date}</div>
+      <div class="muhurat-time">${m.time}</div>
+      <div class="muhurat-detail">${m.nakshatra} · ${m.tithi}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:6px;">${m.note}</div>
+      <div class="muhurat-vendors-cta">
+        <span>देखें available vendors for this date</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== BUDGET CALCULATOR =====
+const budgetItems = [
+  { icon:'🎪', name:'Tent & Furniture', nameHi:'टेंट', pct:0.20 },
+  { icon:'🍲', name:'Catering / Food', nameHi:'खाना', pct:0.35 },
+  { icon:'🎺', name:'Band-Baja', nameHi:'बैंड', pct:0.10 },
+  { icon:'💐', name:'Decoration', nameHi:'सजावट', pct:0.08 },
+  { icon:'📸', name:'Photography', nameHi:'फोटो', pct:0.07 },
+  { icon:'👗', name:'Clothes & Jewelry', nameHi:'कपड़े', pct:0.12 },
+  { icon:'🛒', name:'Ration / Grocery', nameHi:'राशन', pct:0.06 },
+  { icon:'🎆', name:'Miscellaneous', nameHi:'अन्य', pct:0.02 },
+];
+
+function calcBudget() {
+  const budget = parseInt(document.getElementById('totalBudget').value);
+  const guests = parseInt(document.getElementById('guestCount').value);
+  if(!budget || budget < 10000) { alert('Please enter a valid budget (min ₹10,000)'); return; }
+  document.getElementById('budgetDisplay').textContent = '₹' + budget.toLocaleString('en-IN');
+  document.getElementById('guestDisplay').textContent = guests || 'N/A';
+  const breakdown = document.getElementById('calcBreakdown');
+  breakdown.innerHTML = budgetItems.map(item => {
+    const amt = Math.round(budget * item.pct);
+    const pct = Math.round(item.pct * 100);
+    return `
+      <div class="budget-item">
+        <div class="budget-item-icon">${item.icon}</div>
+        <div class="budget-item-name">${item.name}<br><span style="font-family:'Noto Sans Devanagari',sans-serif;font-size:11px">${item.nameHi}</span></div>
+        <div class="budget-item-amount">₹${amt.toLocaleString('en-IN')}</div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:2px">${pct}% of budget</div>
+        <div class="budget-bar"><div class="budget-bar-fill" style="width:${pct*3}%"></div></div>
+      </div>
+    `;
+  }).join('');
+  const res = document.getElementById('calcResults');
+  res.classList.add('show');
+  res.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+// ===== CHECKLIST =====
+function renderChecklist() {
+  const grid = document.getElementById('checklistGrid');
+  grid.innerHTML = checklistData.map(cat => `
+    <div class="checklist-cat">
+      <div class="checklist-header ${cat.header}">${cat.emoji} ${cat.label} / ${cat.labelHi}</div>
+      <div class="checklist-items">
+        ${cat.items.map((item,i) => `
+          <div class="checklist-item">
+            <div class="check-box" id="cb-${cat.header}-${i}" onclick="toggleCheck(this)"></div>
+            <div><div class="checklist-item-text">${item.en}</div><div class="checklist-item-hi">${item.hi}</div></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+// ===== TESTIMONIALS =====
+function renderTestimonials() {
+  document.getElementById('testimonialGrid').innerHTML = testimonials.map(t => `
+    <div class="testimonial-card">
+      <div class="testi-video">
+        <div class="play-btn">▶️</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <div style="font-size:32px">${t.icon}</div>
+        <div><div class="testi-name">${t.name} / ${t.nameHi}</div><div class="testi-village">📍 ${t.village}</div></div>
+      </div>
+      <div class="testi-text">"${t.text}"</div>
+      <div class="testi-text-hi">"${t.textHi}"</div>
+      <div class="testi-rating">${'⭐'.repeat(t.rating)} (${t.rating}.0)</div>
+    </div>
+  `).join('');
+}
+
+// ===== GROCERY =====
+function addGroceryRow() {
+  const row = document.createElement('div');
+  row.className = 'grocery-row';
+  row.innerHTML = `
+    <input type="text" placeholder="Item name / नाम" />
+    <input type="number" placeholder="Qty" />
+    <select><option>kg</option><option>liter</option><option>packet</option><option>dozen</option></select>
+    <button class="btn-remove" onclick="removeGroceryRow(this)">✕</button>
+  `;
+  document.getElementById('groceryItems').appendChild(row);
+}
+function removeGroceryRow(btn) {
+  const rows = document.querySelectorAll('.grocery-row');
+  if(rows.length > 1) btn.closest('.grocery-row').remove();
+}
+function submitGroceryQuote() { alert('✅ Quote request bhej diya! 3 kirana stores se 24 ghante mein quote milega.\n\nYour WhatsApp number pe confirmation aayega.'); }
+
+// ===== SEARCH =====
+function fillSearch(village) { document.getElementById('searchInput').value = village; }
+function doSearch() {
+  const q = document.getElementById('searchInput').value;
+  const cat = document.getElementById('searchCat').value;
+  if(q) { alert('Searching for vendors in: ' + q + (cat?' ('+cat+')':'')); document.getElementById('vendors').scrollIntoView({behavior:'smooth'}); }
+}
+
+// ===== MODAL =====
+function openModal() { document.getElementById('modalOverlay').classList.add('open'); }
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+function closeModalOutside(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
+function sendOtp() {
+  const ph = document.getElementById('phoneInput').value;
+  if(ph.length!==10){alert('Please enter a valid 10-digit mobile number');return;}
+  document.getElementById('phoneSent').textContent = ph;
+  document.getElementById('modalStep1').style.display='none';
+  document.getElementById('modalStep2').style.display='block';
+}
+function verifyOtp() { closeModal(); alert('✅ Login successful! Welcome to Gramin Vivah.'); }
+function resendOtp() { alert('OTP resent!'); }
+
+// ===== LANG TOGGLE =====
+let lang = 'hi';
+function toggleLang() {
+  lang = lang==='hi'?'en':'hi';
+  alert('Language switching to: ' + (lang==='hi'?'हिंदी (Hindi)':'English') + '\n\n(Full i18n with next-intl in production)');
+}
+
+// ===== MOBILE MENU =====
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+// ===== INIT =====
+renderVendors();
+renderCalendar();
+renderMuhurats();
+renderChecklist();
+renderTestimonials();
+
+// Animate counter
+function animateCounter(el, target, suffix='') {
+  let current = 0;
+  const step = target / 60;
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = Math.floor(current) + suffix;
+    if(current >= target) clearInterval(timer);
+  }, 16);
+}
+setTimeout(() => {
+  animateCounter(document.getElementById('ctr-vendors'), 50, '+');
+}, 800);
+</script>
+</body>
+</html>

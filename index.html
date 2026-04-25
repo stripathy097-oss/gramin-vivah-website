@@ -1201,6 +1201,24 @@ footer {
 </div>
 
 <script>
+  // Search function jo real-time filter karega
+function searchVendors() {
+    let input = document.getElementById('searchInput').value.toLowerCase().trim();
+    let container = document.getElementById('vendorList');
+    
+    // Naya filtered data nikalna
+    let filteredData = vendors.filter(v => 
+        v.name.toLowerCase().includes(input) || 
+        v.nameHi.toLowerCase().includes(input) || 
+        v.village.toLowerCase().includes(input)
+    );
+
+    // List ko refresh karna
+    renderVendors(filteredData);
+}
+
+// Input box par event listener lagana
+document.getElementById('searchInput').addEventListener('input', searchVendors);
 // ===== DATA =====
 const vendors = [
   { id:1, name:'Shri Ram Tent House', nameHi:'श्रीराम टेंट हाउस', cat:'tent', catLabel:'Tent House', icon:'🎪', village:'Rampur', dist:'1.2 km', rating:4.8, reviews:34, phone:'9876543210', wa:'9876543210', priceMin:15000, priceMax:40000, verified:true, premium:true, emoji:'🎪' },

@@ -1513,7 +1513,64 @@ setTimeout(() => {
         });
     });
 </script>
+  <script>
+    // 1. Search Logic: Jab aap gaon ka naam type karenge
+    function doSearch() {
+        const term = document.getElementById('searchInput').value.toLowerCase().trim();
+        const selectedCat = document.getElementById('searchCat').value;
+        
+        const filtered = vendors.filter(v => {
+            const matchesTerm = v.village.toLowerCase().includes(term) || v.name.toLowerCase().includes(term);
+            const matchesCat = selectedCat === "" || v.cat === selectedCat;
+            return matchesTerm && matchesCat;
+        });
+
+        renderVendors(filtered);
+    }
+
+    // 2. Hint Chips: Jab aap 'Rampur' ya 'Sitapur' par click karenge
+    function fillSearch(village) {
+        document.getElementById('searchInput').value = village;
+        doSearch();
+    }
+
+    // Input box mein enter dabane par ya type karne par search trigger ho
+    document.getElementById('searchInput').addEventListener('input', doSearch);
+</script>
 </body>
   
- 
+<script>
+    // 1. Jab koi type kare toh filter ho
+    const searchField = document.getElementById('searchInput');
+    
+    if(searchField) {
+        searchField.addEventListener('input', function() {
+            let term = this.value.toLowerCase().trim();
+            // Yeh aapke vendors data se match karega
+            let filteredData = vendors.filter(v => 
+                v.name.toLowerCase().includes(term) || 
+                v.village.toLowerCase().includes(term) ||
+                v.nameHi.includes(term)
+            );
+            renderVendors(filteredData);
+        });
+    }
+
+    // 2. Jo 'Tulandi' ya 'Barpali' likha hai, unpar click karne se search ho
+    document.querySelectorAll('.hint-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            let villageName = this.innerText;
+            searchField.value = villageName;
+            // Search ko trigger karein
+            searchField.dispatchEvent(new Event('input'));
+        });
+    });
+
+    // 3. Page load hote hi saare vendors dikhayein
+    window.onload = () => {
+        if(typeof vendors !== 'undefined') {
+            renderVendors(vendors); 
+        }
+    };
+</script> 
 </html>

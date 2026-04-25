@@ -1469,23 +1469,33 @@ setTimeout(() => {
   animateCounter(document.getElementById('ctr-vendors'), 50, '+');
 }, 800);
 </script>
-</body>
   <script>
-    // Search function ka logic
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-        let filter = this.value.toUpperCase();
-        let list = document.getElementById('vendorList');
-        let cards = list.getElementsByTagName('div');
+    // 1. Search Logic
+    document.querySelector('.search-input').addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase().trim();
+        let vendorCards = document.querySelectorAll('.vendor-card');
 
-        for (let i = 0; i < cards.length; i++) {
-            // Har card ke andar ka text check karega (Village name ke liye)
-            let text = cards[i].textContent || cards[i].innerText;
-            if (text.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = ""; // Agar naam match hua toh dikhayega
+        vendorCards.forEach(function(card) {
+            let cardContent = card.innerText.toLowerCase();
+            if (cardContent.includes(searchTerm)) {
+                card.style.display = "block";
             } else {
-                cards[i].style.display = "none"; // Nahi toh chupa dega
+                card.style.display = "none";
             }
-        }
+        });
+    });
+
+    // 2. Hint Chips (Tulandi, Barpali) par click logic
+    document.querySelectorAll('.hint-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            let villageName = this.innerText;
+            let sInput = document.querySelector('.search-input');
+            sInput.value = villageName;
+            sInput.dispatchEvent(new Event('input'));
+        });
     });
 </script>
+</body>
+  
+ 
 </html>

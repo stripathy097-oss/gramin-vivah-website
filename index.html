@@ -1470,4 +1470,22 @@ setTimeout(() => {
 }, 800);
 </script>
 </body>
+  <script>
+    // Search function ka logic
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        let filter = this.value.toUpperCase();
+        let list = document.getElementById('vendorList');
+        let cards = list.getElementsByTagName('div');
+
+        for (let i = 0; i < cards.length; i++) {
+            // Har card ke andar ka text check karega (Village name ke liye)
+            let text = cards[i].textContent || cards[i].innerText;
+            if (text.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = ""; // Agar naam match hua toh dikhayega
+            } else {
+                cards[i].style.display = "none"; // Nahi toh chupa dega
+            }
+        }
+    });
+</script>
 </html>
